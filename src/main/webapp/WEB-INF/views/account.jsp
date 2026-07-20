@@ -6,13 +6,14 @@
 </head>
 <body>
 <h1>Hello Spring JDBC</h1>
-
+<a href="<c:url value='/' />">뒤로 가기</a>
 <section>
     <form method="post">
         계좌ID: <input name="id" readonly value="${account.id}"><br>
         계좌명: <input name="name" placeholder="계좌명" value="${account.name}"><br>
         생성일시: <input name="createdAt " readonly value="${account.createdAt}">
         <button>수정</button>
+        <a href="<c:url value='/account/${account.id}/delete'/>">삭제</a>
     </form>
 </section>
 </body>

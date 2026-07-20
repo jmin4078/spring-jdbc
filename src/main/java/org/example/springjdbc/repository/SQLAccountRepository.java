@@ -46,6 +46,7 @@ public class SQLAccountRepository implements AccountRepository {
 
     @Override
     public void deleteById(long id) {
-
+        String query = "DELETE FROM accounts WHERE id = ?";
+        jdbcTemplate.update(query, id);
     }
 }

@@ -32,5 +32,10 @@ public class AccountController {
         bankService.changeAccount(new AccountUpdateDTO(id, dto.name()));
         return "redirect:/account/%d".formatted(id);
     }
+    @GetMapping("/{id}/delete")
+    public String deleteAccount(@PathVariable long id) {
+        bankService.deleteAccount(id);
+        return "redirect:/";
+    }
 
 }

@@ -41,7 +41,7 @@ public class BankServiceImpl implements BankService {
 
     @Override
     public void deleteAccount(long id) {
-
+        accountRepository.deleteById(id);
     }
 
     @Override
