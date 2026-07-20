@@ -21,7 +21,7 @@
             <span>계좌ID : ${account.id}</span><br>
             <span>계좌이름 : ${account.name}</span><br>
             <span>생성일시 : ${account.createdAt}</span>
-            <a href="<c:url value='/account/${account.id}'/>">자세히 보기</a>
+            <a href="<c:url value='/account/${account.id}' />">자세히보기</a>
         </div>
     </c:forEach>
 </section>
