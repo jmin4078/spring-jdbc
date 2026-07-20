@@ -25,6 +25,7 @@ public class MainController {
     @PostMapping("/")
     public String makeAccount(@ModelAttribute AccountFormDTO dto) {
         System.out.println("dto = " + dto);
+        bankService.makeAccount(dto);
         return "redirect:/";
     }
 }
