@@ -2,6 +2,7 @@ package org.example.springjdbc.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.springjdbc.dto.AccountFormDTO;
+import org.example.springjdbc.dto.AccountUpdateDTO;
 import org.example.springjdbc.dto.AccountViewDTO;
 import org.example.springjdbc.entity.Account;
 import org.example.springjdbc.repository.AccountRepository;
@@ -23,13 +24,19 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
-    public void changeAccount(AccountFormDTO dto) {
-
+//    public void changeAccount(AccountFormDTO dto) {
+    public void changeAccount(AccountUpdateDTO dto) {
+        System.out.println("BankServiceImpl.changeAccount");
+        System.out.println("dto = " + dto);
+        // 기존 엔터티(DB)를 불러와야함
+        Account account = accountRepository.findById(dto.id());
+        account.setName(dto.name()); // 실질적으로 변경하는 name을 변경해서
+        accountRepository.update(account);
     }
 
     @Override
     public AccountViewDTO findAccount(long id) {
-        return null;
+        return AccountViewDTO.fromEntity(accountRepository.findById(id));
     }
 
     @Override

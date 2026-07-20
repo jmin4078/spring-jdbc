@@ -1,12 +1,13 @@
 package org.example.springjdbc.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.springjdbc.dto.AccountFormDTO;
+import org.example.springjdbc.dto.AccountUpdateDTO;
 import org.example.springjdbc.dto.AccountViewDTO;
 import org.example.springjdbc.service.BankService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/account")
@@ -15,10 +16,21 @@ public class AccountController {
     private final BankService bankService;
 
     // /account/{id} - (/account)
-    @RequestMapping("/{id}") // PathVariable
+//    @RequestMapping("/{id}") // PathVariable
+    @GetMapping("/{id}") // PathVariable
     public String getAccountById(@PathVariable long id, Model model) {
         AccountViewDTO account = bankService.findAccount(id);
         model.addAttribute("account", account);
         return "account"; // views/account.jsp
     }
+
+    @PostMapping("/{id}")
+    public String updateAccount(
+            @PathVariable long id,
+            @ModelAttribute AccountFormDTO dto // id, createdAt은 무시되어서 name만.
+    ) {
+        bankService.changeAccount(new AccountUpdateDTO(id, dto.name()));
+        return "redirect:/account/%d".formatted(id);
+    }
+
 }
