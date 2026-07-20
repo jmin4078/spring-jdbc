@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: user
-  Date: 26. 7. 20.
-  Time: 오전 10:31
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,5 +6,11 @@
 <body>
 <h1>Hello Spring JDBC</h1>
 
+<section>
+    <form method="post">
+        <input name="name" placeholder="계좌명">
+        <button>생성</button>
+    </form>
+</section>
 </body>
 </html>
