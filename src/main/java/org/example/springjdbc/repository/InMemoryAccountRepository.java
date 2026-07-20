@@ -25,7 +25,7 @@ public class InMemoryAccountRepository implements AccountRepository {
 
     @Override
     public List<Account> findAll() {
-        return List.of();
+        return store.values().stream().toList();
     }
 
     @Override
