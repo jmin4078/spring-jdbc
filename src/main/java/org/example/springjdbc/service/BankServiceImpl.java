@@ -39,6 +39,9 @@ public class BankServiceImpl implements BankService {
 
     @Override
     public List<AccountViewDTO> getAccounts() {
-        return List.of();
+        return accountRepository.findAll() // Account -> AccountViewDTO
+                .stream()
+                .map(AccountViewDTO::fromEntity)
+                .toList();
     }
 }
